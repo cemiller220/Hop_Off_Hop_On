@@ -83,7 +83,10 @@ def get_trip_line(start,end,line,day,time):
     #pick correct direction
     trip_times = pd.merge(start_times,end_times, on='trip_id')
     trip_times = trip_times[trip_times['stop_sequence_x'] < trip_times['stop_sequence_y']]
-    trip = trip_times.sort_values('departure_seconds').reset_index(drop=True).loc[0]
+    if not trip_times.empty:
+        trip = trip_times.sort_values('departure_seconds').reset_index(drop=True).loc[0]
+    else:
+        trip = pd.DataFrame()
     
     return trip
 
