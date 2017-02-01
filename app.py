@@ -2,7 +2,7 @@ import pandas as pd
 from bokeh.plotting import figure, output_file, show
 from bokeh.charts import Bar
 from bokeh.models import Range1d
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, Markup
 from bokeh.embed import components
 from flask_wtf import FlaskForm
 from wtforms import SelectField
@@ -116,46 +116,77 @@ def direct():
         else:
             return redirect('/all')
 
+app.shortest_button = Markup('''<form id='other' method='post' action='shortest' style="display:inline-block">
+    <p><input type='submit' value="Shortest Total Time" class="btn btn-lg btn-primary" /></p>
+    </form>''')
+app.transfer_button = Markup('''<form id='other' method='post' action='transfer' style="display:inline-block">
+    <p><input type='submit' value="Shortest Transfer Time" class="btn btn-lg btn-primary" /></p>
+    </form>''')
+app.crowded_button = Markup('''<form id='other' method='post' action='crowded' style="display:inline-block">
+    <p><input type='submit' value="Least Crowded" class="btn btn-lg btn-primary" /></p>
+    </form>''')
+app.all_button = Markup('''<form id='other' method='post' action='all' style="display:inline-block">
+    <p><input type='submit' value="All Routes" class="btn btn-lg btn-primary" /></p>
+    </form>''')
+
+
 @app.route('/shortest',methods=['GET','POST'])
 def shortest():
     min_total=100000
     i=0
+    min_inds = []
     for route in app.routes:
-        if route[8]<min_total:
+        if route[8] == min_total:
+            min_inds.append(i)
+        elif route[8]<min_total:
             min_total = route[8]
-            min_ind = i
+            min_inds = [i]
         i+=1
-    return render_template('results_transfer.html',start_name=app.vars['start_name'],end_name=app.vars['end_name'], titles=app.vars['titles'],
-                           results=app.routes[min_ind], other_action='transfer', other_value='Shortest Transfer Time', padding=72.7)
+    shortest_route = []
+    for ind in min_inds:
+        shortest_route.append(app.routes[ind])
+
+    return render_template('results_all_transfers.html',start_name=app.vars['start_name'],end_name=app.vars['end_name'], titles=app.vars['titles'],
+                           results=shortest_route, button1=app.transfer_button, button2=app.crowded_button, button3=app.all_button, padding=49.5)
 
 @app.route('/crowded',methods=['GET','POST'])
 def crowded():
-    min_total=100000
+    min_crowd=100000
     i=0
     min_inds = []
     for route in app.routes:
-        if route[4]<=min_total:
-            min_total = route[4]
+        if route[4] == min_crowd:
             min_inds.append(i)
+        elif route[4]<min_crowd:
+            min_crowd = route[4]
+            min_inds = [i]
         i+=1
     
     crowd_routes = []
     for ind in min_inds:
         crowd_routes.append(app.routes[ind])
+
     return render_template('results_all_transfers.html',start_name=app.vars['start_name'],end_name=app.vars['end_name'], titles=app.vars['titles'],
-                           results=crowd_routes, other_action='transfer', other_value='Shortest Transfer Time', padding=72.7)
+                           results=crowd_routes, button1=app.shortest_button, button2=app.transfer_button, button3=app.all_button, padding=46.5)
 
 @app.route('/transfer',methods=['GET','POST'])
 def transfer():
     min_transfer=100000
     i=0
+    min_inds = []
     for route in app.routes:
-        if route[3]<min_transfer:
+        if route[3] == min_transfer:
+            min_inds.append(i)
+        elif route[3]<min_transfer:
             min_transfer = route[3]
-            min_ind = i
+            min_inds = [i]
         i+=1
-    return render_template('results_transfer.html',start_name=app.vars['start_name'],end_name=app.vars['end_name'], titles=app.vars['titles'],
-                           results=app.routes[min_ind], other_action='shortest', other_value='Shortest Total Time', padding=75)
+    transfer_route = []
+    for ind in min_inds:
+        transfer_route.append(app.routes[ind])
+
+    return render_template('results_all_transfers.html',start_name=app.vars['start_name'],end_name=app.vars['end_name'], titles=app.vars['titles'],
+                           results=transfer_route, button1=app.shortest_button, button2=app.crowded_button, button3=app.all_button, padding=51.6)
 
 @app.route('/all',methods=['GET','POST'])
 def all():
@@ -164,7 +195,8 @@ def all():
                                titles=app.vars['titles'],results=app.routes)
     else:
         return render_template('results_all_transfers.html',start_name=app.vars['start_name'],end_name=app.vars['end_name'],
-                               titles=app.vars['titles'],results=app.routes)
+                               titles=app.vars['titles'], results=app.routes, button1=app.shortest_button, button2=app.transfer_button,
+                               button3=app.crowded_button, padding=43.3)
 
 @app.route('/example',methods=['GET','POST'])
 def example():
