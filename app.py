@@ -79,7 +79,7 @@ def input():
     if request.method=='GET':
         return render_template('input.html',form=form)
     else:
-        print request.form
+        #print request.form
         if 'lines1' in request.form:
             app.vars['line1'] = request.form['lines1']
             return render_template('input2.html',form=form,line1=app.vars['line1'])
@@ -101,7 +101,6 @@ def input():
             app.vars['start_name'] = request.form['start_station']
             app.vars['end_name'] = request.form['end_station']
             app.vars['start_id'] = app.stops1[app.stops1['stop_name'] == request.form['start_station']]['stop_id'].values[0]
-            print app.vars['start_id']
             app.vars['end_id'] = app.stops2[app.stops2['stop_name'] == request.form['end_station']]['stop_id'].values[0]
             app.vars['titles'] = ['Depart from %s'%app.vars['start_name'],'Arrive at Transfer','Transfer From','Transfer Wait Time (mintues)',
                                   'Transfer Crowdedness','Transfer To', 'Depart from Transfer', 'Arrive at %s'%app.vars['end_name'], 'Total Time (minutes)']
