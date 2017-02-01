@@ -67,8 +67,8 @@ class SelectForm(FlaskForm):
     days = SelectField('days', choices=[('sunday','Sunday'),('monday','Monday'),('tuesday','Tuesday'),('wednesday','Wednesday'),
                                         ('thursday','Thursday'),('friday','Friday'),('Saturday','Saturday')])
 
-stops = pd.read_csv('static/data/stops_updated.txt',usecols=['stop_id','stop_name','stop_lat','stop_lon','location_type','parent_station','lines'])
-stops = stops[stops['location_type']==1]
+app.stops = pd.read_csv('static/data/stops_updated.txt',usecols=['stop_id','stop_name','stop_lat','stop_lon','location_type','parent_station','lines'])
+app.stops = stops[stops['location_type']==1]
 days = ['sunday','monday','tuesday','wednesday','thursday','friday','saturday']
 hours = map('{:02d}'.format,range(1,13))
 minutes = map('{:02d}'.format,range(0,60))
@@ -86,8 +86,8 @@ def input():
             return render_template('input2.html',form=form,line1=app.vars['line1'])
         elif 'lines2' in request.form:
             app.vars['line2'] = request.form['lines2']
-            app.stops1 = pd.DataFrame(stops[stops.lines.map(lambda x: app.vars['line1'] in x)])
-            app.stops2 = pd.DataFrame(stops[stops.lines.map(lambda x: app.vars['line2'] in x)])
+            app.stops1 = pd.DataFrame(app.stops[app.stops.lines.map(lambda x: app.vars['line1'] in x)])
+            app.stops2 = pd.DataFrame(app.stops[app.stops.lines.map(lambda x: app.vars['line2'] in x)])
             return render_template('input3.html',line1=app.vars['line1'],line2=app.vars['line2'],data1=app.stops1['stop_name'],
                                    data2=app.stops2['stop_name'],form=form,hours=hours,minutes=minutes,am_pm=am_pm)
         elif 'start_station' in request.form:
