@@ -114,6 +114,7 @@ def input():
 @app.route('/direct', methods=['GET','POST'])
 def direct():
     if request.method=='GET':
+        print app.vars
         app.routes, app.page = trip.calculate_routes(app.vars['start_id'],app.vars['end_id'],app.vars['date'],app.vars['time_wanted'])
         if app.page=='multiple':
             return render_template('multiple_transfers.html',start_name=app.vars['start_name'],end_name=app.vars['end_name'])
