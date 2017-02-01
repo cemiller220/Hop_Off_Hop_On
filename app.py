@@ -88,9 +88,13 @@ def input():
             app.vars['line2'] = request.form['lines2']
             app.stops1 = pd.DataFrame(app.stops[app.stops.lines.map(lambda x: app.vars['line1'] in x)])
             app.stops2 = pd.DataFrame(app.stops[app.stops.lines.map(lambda x: app.vars['line2'] in x)])
+            print 'app.stops1'
+            print app.stops1
             return render_template('input3.html',line1=app.vars['line1'],line2=app.vars['line2'],data1=app.stops1['stop_name'],
                                    data2=app.stops2['stop_name'],form=form,hours=hours,minutes=minutes,am_pm=am_pm)
         elif 'start_station' in request.form:
+            print 'app.stops1'
+            print app.stops1
             app.vars['date'] = request.form['days']
             app.vars['hour'] = request.form['hour']
             app.vars['minute'] = request.form['minute']
