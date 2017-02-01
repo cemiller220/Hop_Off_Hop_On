@@ -11,6 +11,9 @@ import subwayTripAnalysis as trip
 app = Flask(__name__)
 app.vars = {}
 
+app.logger.addHandler(logging.StreamHandler(sys.stdout))
+app.logger.setLevel(logging.ERROR)
+
 @app.route('/')
 def main():
     return redirect('/home')
