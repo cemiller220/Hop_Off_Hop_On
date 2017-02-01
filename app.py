@@ -68,7 +68,7 @@ class SelectForm(FlaskForm):
                                         ('thursday','Thursday'),('friday','Friday'),('Saturday','Saturday')])
 
 app.stops = pd.read_csv('static/data/stops_updated.txt',usecols=['stop_id','stop_name','stop_lat','stop_lon','location_type','parent_station','lines'])
-app.stops = stops[stops['location_type']==1]
+app.stops = app.stops[app.stops['location_type']==1]
 days = ['sunday','monday','tuesday','wednesday','thursday','friday','saturday']
 hours = map('{:02d}'.format,range(1,13))
 minutes = map('{:02d}'.format,range(0,60))
