@@ -12,3 +12,4 @@ scipy
 pandas
 flask_wtf
 wtforms
+sklearn
