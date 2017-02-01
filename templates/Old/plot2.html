@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<div>
+  			<h1>Sample of 10 Taxi Rides in NYC</h1>
+            <p style="text-size:20pt">Included here are the locations of the nearest subway stations (shown as open circles) to the starting and ending points of each ot the 10 taxis rides sampled here.</p>
+            {{ div | safe }}
+            <p>
+                To see which trips started and ended near a subway station click the button below: 
+                <form id='next_button' method='get' action='10trips_3' >
+                    <p>
+                        <input type='submit' value='View Close Trips' />
+                    </p>
+                </form>
+            </p>
+		</div>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+		<div>
+  			<h1>Sample of 10 Taxi Rides in NYC</h1>
+            <p style="text-size:20pt">Here are the straight line paths of 10 different taxi trips taken in NYC.</p>
+        </div>
+        <div>
+            {{ div | safe }}
+        </div>
+        <div>
+            <p>
+                To view the locations of the closest subway stations to each trip click the button below:
+                <form id='next_button' method='get' action='10trips_2' >
+                    <p>
+                        <input type='submit' value='View Closest Stations' />
+                    </p>
+                </form>
+            </p>
+		</div>
+{% endblock %}

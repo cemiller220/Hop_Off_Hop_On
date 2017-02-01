@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container-fluid" style="margin-top: 30px">
+    
+    <div class="row">
+        <div class="panel panel-primary" style="width: 500px; margin: 0 auto 10px auto">
+            <div class="panel-body">
+                <p style="text-align: center; margin: 0"> Choose a day and select as many station as you would like to plot by holding control/command. Then click Sumbit to plot. </p>
+                <p style="text-align: center; margin: 0"> Hover over legend item to isolate station </p>
+                <p style="text-align: center; margin: 0"> To pick new stations, click Restart. </p>
+                <p style="text-align: center; margin: 0"> Please give the page time to load/reload. </p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row" >
+        
+        <div class="col-fixed-200-left">
+            <!-- Day Drowdown -->
+            <div class="panel panel-primary" style="width: 200px">
+                <div class="panel-heading" style="text-align: center"> <h1 class="panel-title">Day</h1> </div>
+                <div class="panel-body center-block">
+                    <div id="day-dropdown2" style="margin: 0 20px"></div>
+                </div>
+            </div>
+            <!-- Day Drowdown -->
+            
+            <!-- Lines Selector -->
+            <div class="panel panel-primary" style="width: 200px">
+                <div class="panel-heading" style="text-align: center"> <h1 class="panel-title">Lines</h1> </div>
+                <div class="panel-body">
+                    <div id="lines-selector2" style="margin: 0 50px"></div>
+                </div>
+            </div>
+            <!-- Lines Selector -->
+            
+            
+            <button type="button" class="btn btn-lg btn-primary" id="make_plot">Submit</button>
+            <button type="button" class="btn btn-lg btn-primary" onClick="window.location.reload()">Restart</button>
+            
+        </div>
+        
+        <div class="col-fixed-310-mid">
+            
+            <!-- Stop ID Selector -->
+            <div class="panel panel-primary" style="width: 310px">
+                <div class="panel-heading" style="text-align: center"> <h1 class="panel-title">Stop ID</h1> </div>
+                <div class="panel-body">
+                    <div id="stop-id-selector2"></div>
+                </div>
+            </div>
+            <!-- Stop ID Selector -->
+            
+        </div>
+        
+        <div class="col-fixed-600-right">
+            
+            <!-- Crowd Chart -->
+            <div class="panel panel-primary" style="width: 600px">
+                <div class="panel-heading" style="text-align: center"> <h1 class="panel-title">Time Series</h1> </div>
+                <div class="panel-body">
+                    <div class="center-block" id="crowd-chart" style="width: 600px; height: 380px"></div>
+                </div>
+            </div>
+            <!-- Crowd Chart -->
+            
+        </div>
+        
+        
+    </div>
+</div>
+
+
+<script src="{{url_for('static', filename='js/line.js')}}" type='text/javascript'></script>
+
+{% endblock %}
