@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+            <ul class="nav nav-sidebar">
+                <li style="padding: 10px 0px 10px 20px; background-color: #428bca; color: white">Transfer Stations:</li>
+                <li><a href="#plot1">168th St</a></li>
+                <li><a href="#plot2">59th St - Columbus Circle</a></li>
+                <li><a href="#plot3">Times Sq - 42nd St</a></li>
+                <li><a href="#plot4">Park Pl - Chambers St - World Trade Ctr</a></li>
+                <li><a href="#plot5">Fulton St</a></li>
+            </ul>
+        </div>
+        
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <h1 class="page-header">Transfer Times Between Popular Routes</h1>
+
+            <p>Looking at the popularity of all the different transfers, I have identified transfering to and from the A, C, and E trains to the 1 and 2 trains as the most popular transfers. There are 5 stations where these transfers can occur:</p>
+            <li id='bullets'>168th St</li>
+            <li id='bullets'>59th St - Columbus Circle</li>
+            <li id='bullets'>Times Sq - 42nd St</li>
+            <li id='bullets'>Park Pl - Chambers St - World Trade Ctr</li>
+            <li id='bullets'>Fulton St</li>
+            <p>The plots below show the wait times for transfers to and from each line at that station as a function of the train's arrival time. As you can see, although there are many short wait times of &lt;5 minutes, there are also many wait times in the 5-10 minute range and at non-peak hours the wait times can go up to &gt;10 minutes at times.</p>
+            
+            <div>
+                <h4 id='plot1' class='offset'> </h4>
+                {{ div | safe }}
+            </div>
+            <br/>
+            <div>
+                <h4 id='plot2' class='offset'></h4>
+                {{ div2 | safe }}
+            </div>
+            <br/>
+            <div>
+                <h4 id='plot3' class='offset'></h4>
+                {{ div3 | safe }}
+            </div>
+            <br/>
+            <div>
+                <h4 id='plot4' class='offset'></h4>
+                {{ div4 | safe }}
+            </div>
+            <br/>
+            <div>
+                <h4 id='plot5' class='offset'></h4>
+                {{ div5 | safe }}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

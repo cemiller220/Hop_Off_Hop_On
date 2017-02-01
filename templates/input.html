@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="center-panel" style="width: 800px; margin: 20px auto">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h1 class="panel-title" style="text-align: center; font-size: 20pt">Subway Transfer Finder</h1>
+        </div>
+        <div class="panel-body" style="text-align: center;">
+            <form method='post' action='input'>
+                <p> Starting Line:
+                {{ form.lines1(**{"onchange":"this.form.submit()"}) }}
+                Station:
+                <select disabled='disabled' name='start_station' style="width: 260px">
+                </select>
+                </p>
+            </form>
+            <p> Ending Line:
+            <select disabled='disabled' name='end_line' style="width: 80px">
+            </select>
+            Station:
+            <select disabled='disabled' name='end_station' style="width: 260px">
+            </select>
+            </p>
+            <p> Day of Week:
+            <select disabled='disabled' name='day' style="width: 100px">
+            </select>
+            </p>
+            <p> Time:
+            <select disabled='disabled' name='hour'>
+            </select>
+            :
+            <select disabled='disabled' name='minute'>
+            </select>
+            &nbsp;&nbsp;
+            <select disabled='disabled' name='am_pm'>
+            </select>
+            </p>
+            <p><input type='submit' value='Submit' /></p>
+            <form id='trip_info' method='get' action='input' >
+                <p style="text-align: right"><input type='submit' value='Start Again' /></p>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

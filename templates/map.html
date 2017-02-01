@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container-fluid" style="margin-top: 30px">
+    <div class="row">
+        <div class="panel panel-primary" style="width: 500px; margin: 0 auto 10px auto">
+            <div class="panel-body">
+                <p style="text-align: center; margin: 0"> Pick a time and day and select as many station or lines as you would like to show on the map by holding control/command. </p>
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="row">
+        <div class="col-fixed-200-left">
+            
+            <!-- Time Slider -->
+            <div class="panel panel-primary">
+                <div class="panel-heading" style="text-align: center"> <h1 class="panel-title">Time</h1> </div>
+                <div class="panel-body">
+                    <div id="time-dropdown" style="margin: 0 30px"></div>
+                </div>
+            </div>
+            <!-- Time Slider -->
+            
+            <!-- Day Drowdown -->
+            <div class="panel panel-primary">
+                <div class="panel-heading" style="text-align: center"> <h1 class="panel-title">Day</h1> </div>
+                <div class="panel-body center-block">
+                    <div id="day-dropdown" style="margin: 0 20px"></div>
+                </div>
+            </div>
+            <!-- Day Drowdown -->
+            
+            <!-- Lines Selector -->
+            <div class="panel panel-primary">
+                <div class="panel-heading" style="text-align: center"> <h1 class="panel-title">Lines</h1> </div>
+                <div class="panel-body">
+                    <div class="center-block" id="lines-selector" style="margin: 0 50px"></div>
+                </div>
+            </div>
+            <!-- Lines Selector -->
+            
+        </div>
+        
+        <div class="col-fixed-310-mid">
+            
+            <!-- Stop ID Selector -->
+            <div class="panel panel-primary">
+                <div class="panel-heading" style="text-align: center"> <h1 class="panel-title">Stop ID</h1> </div>
+                <div class="panel-body">
+                    <div class="center-block" id="stop-id-selector"></div>
+                </div>
+            </div>
+            <!-- Stop ID Selector -->
+            
+        </div>
+        
+        <div class="col-fixed-600-right">
+            
+            <!-- Map -->
+            <div class="panel panel-primary">
+                <div class="panel-heading" style="text-align: center"> <h1 class="panel-title">Map</h1> </div>
+                <div class="panel-body">
+                    <div class="center-block" id="map" style="width: 550px; height: 600px"></div>
+                </div>
+            </div>
+            <!-- Map -->
+            
+        </div>
+    </div>
+</div>
+<script src="{{url_for('static', filename='js/map.js')}}" type='text/javascript'></script>
+
+{% endblock %}
+
+
+<!--<div id="inputSlider" style="text-align: center; width: 90%; padding-left: 10%; padding-top: 5px">
+    <div><input type="range" id="slideRange" value="12" min="0" max="23" step="1" list="steplist">
+        <datalist id="steplist">
+            <option>0</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+            <option>7</option>
+            <option>8</option>
+            <option>9</option>
+            <option>10</option>
+            <option>11</option>
+            <option>12</option>
+            <option>13</option>
+            <option>14</option>
+            <option>15</option>
+            <option>16</option>
+            <option>17</option>
+            <option>18</option>
+            <option>19</option>
+            <option>20</option>
+            <option>21</option>
+            <option>22</option>
+            <option>23</option>
+        </datalist>
+        </div>
+    <span id="sliderValue">12</span>:00
+-->

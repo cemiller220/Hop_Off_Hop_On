@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="page-header text-primary" style="padding-left: 10px">
+    <h1>Transfer Finder Example</h1>
+</div>
+<div class="row featurette" style="padding: 0 50px">
+    <div class="col-md-7" style="padding: 20px">
+        <h1 class="featurette-heading text-primary">Sample Route</h1>
+        <p class="lead">While Google Maps and other map search engines give you subway routes and transfers, they don't always give the best option.</p>
+        <p class="lead">Let's say we want to take a trip from the <strong>86th St Station (1 Train)</strong> to the <strong>Simpson St Station (2 Train)</strong> on Sunday at 8:00 am.</p>
+    </div>
+    <div class="col-md-5">
+        <img class="featurette-image img-responsive center-block" src="{{url_for('static', filename='images/subway_map_example.jpg')}}" alt="Generic placeholder image"/>
+    </div>
+</div>
+<div class="row featurette" style="padding: 50px">
+    <div class="col-md-7 col-md-push-5" style="padding:20px">
+        <h1 class="featurette-heading text-primary">Google Maps Results</h1>
+        <p class="lead">A search on Google Maps returns two possible routes. One in which we take the 1 Train to 96th St where we <strong>wait 12 minutes</strong> to transfer to the 2 Train, and one in which we <strong>walk 9 minutes</strong> to 96th St to get on the 2 Train.</p>
+    </div>
+    <div class="col-md-5 col-md-pull-7">
+        <img class="featurette-image img-responsive center-block" src="{{url_for('static', filename='images/google_maps_result.png')}}" alt="Generic placeholder image"/>
+    </div>
+</div>
+<div class="row featurette" style="padding: 10px 50px">
+    <h1 class="featurette-heading text-primary">Transfer Finder Results</h1>
+    <p class="lead">Using the Transfer Finder, we find that if we take the 1 Train <i>south</i> two stops from 86th St, we can transfer to the 2 Train with only a <strong>2.5 minute wait</strong>. This total time for this trip is also <strong>shorter</strong> than both of the trips Google Maps suggested.</p>
+    <img src="{{url_for('static', filename='images/transfer_finder_table2.png')}}"/>
+</div>
+{% endblock %}

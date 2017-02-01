@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block content %}
+<div>
+  			<h1>Sample of 10 Taxi Rides in NYC</h1>
+            <p style="text-size:20pt">The taxi rides in color represent the rides that both started and ended near subway stations. "Near" has been defined as within 0.25 miles (about a 5 minute walk).</p>
+            {{ div | safe }}
+		</div>
+{% endblock %}

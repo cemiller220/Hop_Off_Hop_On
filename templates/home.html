@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+<div>
+    <div class="jumbotron" style="background-image: url({{url_for('static', filename='images/subwaycar_wletters.png')}}); background-size: cover; height: 400px">
+    </div>
+    
+    <!-- Marketing messaging and featurettes
+     ================================================== -->
+    <!-- Wrap the rest of the page in another container to center all the content. -->
+    
+    <div class="container marketing">
+        
+        <!-- Three columns of text below the carousel -->
+        <div class="row">
+            <div class="col-lg-4">
+                <img class="img-circle" src="{{url_for('static', filename='images/taxi.jpg')}}" alt="taxi" width="140" height="140">
+                    <h2>Taxi Data</h2>
+                    <p>Looking at the NYC taxi data, we can see that many rides start and end near a subway station, but would require a transfer.</p>
+                    <p><a class="btn btn-default" href="/data" role="button">View details &raquo;</a></p>
+                    </div><!-- /.col-lg-4 -->
+            <div class="col-lg-4">
+                <img class="img-circle" src="{{url_for('static', filename='images/crowd.jpeg')}}" alt="crowd" width="140" height="140">
+                    <h2>Crowdedness</h2>
+                    <p>Using the taxi data, we can predict how crowded the subway station will be when making a transfer.</p>
+                    <p><a class="btn btn-default" href="/crowdedness" role="button">View details &raquo;</a></p>
+                    </div><!-- /.col-lg-4 -->
+            <div class="col-lg-4">
+                <img class="img-circle" src="{{url_for('static', filename='images/42st.jpg')}}" alt="42st" width="140" height="140">
+                    <h2>Transfer Finder</h2>
+                    <p>Use this app to find the best place to transfer between two subway lines. You can choose between the shortest total time, the shortest transfer wait time, or the least crowded station.</p>
+                    <p><a class="btn btn-default" href="/input" role="button">View details &raquo;</a></p>
+                    </div><!-- /.col-lg-4 -->
+        </div><!-- /.row -->
+
+</div>
+{% endblock %}

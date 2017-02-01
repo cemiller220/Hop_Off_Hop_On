@@ -1,0 +1,121 @@
+dist,name,x,y
+0.05,Direct,0,0.003809115
+0.05,Single Transfer,0,0.008981349
+0.05,Multiple Transfers,0,0.002469805
+0.05,Direct,1,0.217092634
+0.05,Single Transfer,1,0.568343109
+0.05,Multiple Transfers,1,0.199303988
+0.1,Direct,0,0.019641537
+0.1,Single Transfer,0,0.05709553
+0.1,Multiple Transfers,0,0.01577504
+0.1,Direct,1,0.201260213
+0.1,Single Transfer,1,0.520228928
+0.1,Multiple Transfers,1,0.185998753
+0.15,Direct,0,0.050659464
+0.15,Single Transfer,0,0.151765293
+0.15,Multiple Transfers,0,0.043150522
+0.15,Direct,1,0.170242285
+0.15,Single Transfer,1,0.425559165
+0.15,Multiple Transfers,1,0.158623271
+0.2,Direct,0,0.09101327
+0.2,Single Transfer,0,0.265345151
+0.2,Multiple Transfers,0,0.081045476
+0.2,Direct,1,0.129888479
+0.2,Single Transfer,1,0.311979306
+0.2,Multiple Transfers,1,0.120728318
+0.25,Direct,0,0.122357394
+0.25,Single Transfer,0,0.345626566
+0.25,Multiple Transfers,0,0.112619365
+0.25,Direct,1,0.098544355
+0.25,Single Transfer,1,0.231697892
+0.25,Multiple Transfers,1,0.089154428
+0.3,Direct,0,0.14035914
+0.3,Single Transfer,0,0.391883333
+0.3,Multiple Transfers,0,0.136397165
+0.3,Direct,1,0.08054261
+0.3,Single Transfer,1,0.185441124
+0.3,Multiple Transfers,1,0.065376628
+0.35,Direct,0,0.155546074
+0.35,Single Transfer,0,0.432427619
+0.35,Multiple Transfers,0,0.155641552
+0.35,Direct,1,0.065355675
+0.35,Single Transfer,1,0.144896839
+0.35,Multiple Transfers,1,0.046132241
+0.4,Direct,0,0.169111551
+0.4,Single Transfer,0,0.468159677
+0.4,Multiple Transfers,0,0.170753961
+0.4,Direct,1,0.051790198
+0.4,Single Transfer,1,0.109164781
+0.4,Multiple Transfers,1,0.031019832
+0.45,Direct,0,0.175978815
+0.45,Single Transfer,0,0.487391921
+0.45,Multiple Transfers,0,0.178856247
+0.45,Direct,1,0.044922934
+0.45,Single Transfer,1,0.089932537
+0.45,Multiple Transfers,1,0.022917547
+0.5,Direct,0,0.181294861
+0.5,Single Transfer,0,0.500118574
+0.5,Multiple Transfers,0,0.18454968
+0.5,Direct,1,0.039606888
+0.5,Single Transfer,1,0.077205884
+0.5,Multiple Transfers,1,0.017224113
+0.55,Direct,0,0.186934484
+0.55,Single Transfer,0,0.512362599
+0.55,Multiple Transfers,0,0.188427606
+0.55,Direct,1,0.033967265
+0.55,Single Transfer,1,0.064961859
+0.55,Multiple Transfers,1,0.013346188
+0.6,Direct,0,0.190160493
+0.6,Single Transfer,0,0.520947512
+0.6,Multiple Transfers,0,0.190547643
+0.6,Direct,1,0.030741256
+0.6,Single Transfer,1,0.056376946
+0.6,Multiple Transfers,1,0.01122615
+0.65,Direct,0,0.192261007
+0.65,Single Transfer,0,0.524574957
+0.65,Multiple Transfers,0,0.191760998
+0.65,Direct,1,0.028640743
+0.65,Single Transfer,1,0.052749501
+0.65,Multiple Transfers,1,0.010012795
+0.7,Direct,0,0.193995323
+0.7,Single Transfer,0,0.526969285
+0.7,Multiple Transfers,0,0.192574107
+0.7,Direct,1,0.026906426
+0.7,Single Transfer,1,0.050355173
+0.7,Multiple Transfers,1,0.009199686
+0.75,Direct,0,0.194717002
+0.75,Single Transfer,0,0.528060256
+0.75,Multiple Transfers,0,0.192873874
+0.75,Direct,1,0.026184747
+0.75,Single Transfer,1,0.049264201
+0.75,Multiple Transfers,1,0.008899919
+0.8,Direct,0,0.195011531
+0.8,Single Transfer,0,0.528491454
+0.8,Multiple Transfers,0,0.193007924
+0.8,Direct,1,0.025890218
+0.8,Single Transfer,1,0.048833003
+0.8,Multiple Transfers,1,0.008765869
+0.85,Direct,0,0.195154629
+0.85,Single Transfer,0,0.52873384
+0.85,Multiple Transfers,0,0.193088164
+0.85,Direct,1,0.02574712
+0.85,Single Transfer,1,0.048590618
+0.85,Multiple Transfers,1,0.008685629
+0.9,Direct,0,0.195245107
+0.9,Single Transfer,0,0.528955272
+0.9,Multiple Transfers,0,0.19314126
+0.9,Direct,1,0.025656643
+0.9,Single Transfer,1,0.048369186
+0.9,Multiple Transfers,1,0.008632533
+0.95,Direct,0,0.19533368
+0.95,Single Transfer,0,0.52912218
+0.95,Multiple Transfers,0,0.193184118
+0.95,Direct,1,0.02556807
+0.95,Single Transfer,1,0.048202278
+0.95,Multiple Transfers,1,0.008589675
+1,Direct,0,0.195409633
+1,Single Transfer,0,0.529275516
+1,Multiple Transfers,0,0.193218642
+1,Direct,1,0.025492116
+1,Single Transfer,1,0.048048942
+1,Multiple Transfers,1,0.008555151
