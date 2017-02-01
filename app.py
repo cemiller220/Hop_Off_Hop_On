@@ -1,9 +1,6 @@
 import pandas as pd
-from bokeh.plotting import figure, output_file, show
-from bokeh.charts import Bar
-from bokeh.models import Range1d
 from flask import Flask, render_template, request, redirect, Markup
-from bokeh.embed import components
+import logging
 from flask_wtf import FlaskForm
 from wtforms import SelectField
 import subwayTripAnalysis as trip
