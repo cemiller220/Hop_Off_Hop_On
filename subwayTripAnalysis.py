@@ -12,8 +12,8 @@ trips = pd.read_csv('static/data/trips.txt',usecols=['route_id','service_id','tr
 stops = pd.read_csv('static/data/stops_updated.txt',usecols=['stop_id','stop_name','stop_lat','stop_lon','location_type','parent_station','lines'])
 stops['lines'] = stops['lines'].apply(literal_eval)
 transfers = pd.read_csv('static/data/transfers_updated2.txt', usecols=['from_stop_id','to_stop_id','start_line','end_line'])
-with open('static/models/fit_dict_all.pkl','r') as f:
-    fit = pickle.load(f)
+#with open('static/models/fit_dict_all.pkl','r') as f:
+#fit = pickle.load(f)
 
 trips_merged = pd.merge(trips,calendar, on='service_id')
 
@@ -107,6 +107,8 @@ def predict_crowdedness(stop_id,day,time):
     if day == 'Saturday' or day == 'Sunday':
         day = 'Weekend'
     ranges = np.logspace(0,2.65,9)
+    with open('static/models/fit_dict%s.pkl'%stop_id[0],'r') as f:
+        fit = pickle.load(f)
 
     return bisect(ranges,fit[(stop_id,day)].predict(time)[0])+1
 
