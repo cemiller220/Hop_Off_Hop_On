@@ -81,9 +81,10 @@ def input():
     if request.method=='GET':
         return render_template('input.html',form=form)
     else:
-        #print request.form
+        print request.form
         if 'lines1' in request.form:
             app.vars['line1'] = request.form['lines1']
+            print 'vars', app.vars
             return render_template('input2.html',form=form,line1=app.vars['line1'])
         elif 'lines2' in request.form:
             app.vars['line2'] = request.form['lines2']
