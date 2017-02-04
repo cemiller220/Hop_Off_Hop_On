@@ -89,10 +89,10 @@ def input():
             print 'vars', app.vars
             return render_template('input2.html',form=form,line1=app.vars['line1'])
         elif 'lines2' in request.form:
+            print 'vars', app.vars
             app.vars['line2'] = request.form['lines2']
             app.stops1 = pd.DataFrame(app.stops[app.stops.lines.map(lambda x: app.vars['line1'] in x)])
             app.stops2 = pd.DataFrame(app.stops[app.stops.lines.map(lambda x: app.vars['line2'] in x)])
-            print 'vars', app.vars
             print 'stops1', app.stops1
             return render_template('input3.html',line1=app.vars['line1'],line2=app.vars['line2'],data1=app.stops1['stop_name'],
                                    data2=app.stops2['stop_name'],form=form,hours=hours,minutes=minutes,am_pm=am_pm)
