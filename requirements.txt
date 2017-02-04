@@ -11,9 +11,5 @@ bokeh==0.12.2
 scipy
 pandas
 flask_wtf
-<<<<<<< HEAD
 wtforms
 sklearn
-=======
-wtforms
->>>>>>> 17f3bf3a90e32a832172b9258956487d095db41f
