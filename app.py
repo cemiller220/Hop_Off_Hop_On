@@ -88,8 +88,6 @@ def input():
             app.vars['line1'] = request.form['lines1']
             print 'vars', app.vars
             return render_template('input2.html',form=form,line1=app.vars['line1'])
-        
-@app.route('/input2', methods=['GET','POST'])
         elif 'lines2' in request.form:
             print 'vars', app.vars
             app.vars['line2'] = request.form['lines2']
