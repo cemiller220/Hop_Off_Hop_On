@@ -155,6 +155,7 @@ table td[rowspan] {
     width: 600px;
     position: absolute;
 }
+<<<<<<< HEAD
 
 .loader {
     border: 16px solid #f3f3f3; /* Light grey */
@@ -169,3 +170,5 @@ table td[rowspan] {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
+=======
+>>>>>>> 17f3bf3a90e32a832172b9258956487d095db41f

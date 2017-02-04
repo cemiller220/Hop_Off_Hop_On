@@ -8,49 +8,28 @@
         <thead>
             <tr>
                 {% for title in titles%}
-<<<<<<< HEAD
-                <th style="width: 150px; text-align: center">{{title}}</th>
-=======
                 <th style="width: 150px">{{title}}</th>
->>>>>>> 17f3bf3a90e32a832172b9258956487d095db41f
                 {% endfor %}
             </tr>
         </thead>
         <tbody>
-            {% for trip in results %}
             <tr>
-                {% for item in trip %}
-<<<<<<< HEAD
-                <td style="width: 150px; text-align: center">{{item}}</td>
-=======
+                {% for item in results %}
                 <td style="width: 150px">{{item}}</td>
->>>>>>> 17f3bf3a90e32a832172b9258956487d095db41f
                 {% endfor %}
             </tr>
-            {% endfor %}
         </tbody>
     </table>
 </div>
 <div style="width: 1200px; margin: 20px auto">
-    {{ button1 }}
-    {{ button2 }}
-    {{ button3 }}
+    <form id='other' method='post' action={{other_action1}} style="display:inline-block">
+        <p><input type='submit' value="{{other_value1}}" class="btn btn-lg btn-primary" /></p>
+    </form>
+    <form id='other' method='post' action={{other_action2}} style="display:inline-block">
+        <p><input type='submit' value="{{other_value2}}" class="btn btn-lg btn-primary" /></p>
+    </form>
     <form id='restart' method='get' action='input' style="display: inline-block; padding-left: {{padding}}%" >
         <p><input type='submit' value='New Trip' class="btn btn-lg btn-primary" /></p>
-    </form></div>
-
-<!--<script>
-    var results = {{results}}
-    $(function(){
-      $("#shortest").click(function(){
-                           for(var i=0; i<results.length; i++){
-                           for(var j=0; j<i.length; j++)
-                           }
-                           $('td').css('background-color','blue');
-                           })
-      });
-</script>-->
-
+    </form>
+</div>
 {% endblock %}
-
-

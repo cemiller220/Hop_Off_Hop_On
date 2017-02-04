@@ -1,7 +1,15 @@
 import pandas as pd
+<<<<<<< HEAD
 from flask import Flask, render_template, request, redirect, Markup
 import logging
 import sys
+=======
+from bokeh.plotting import figure, output_file, show
+from bokeh.charts import Bar
+from bokeh.models import Range1d
+from flask import Flask, render_template, request, redirect, Markup
+from bokeh.embed import components
+>>>>>>> 17f3bf3a90e32a832172b9258956487d095db41f
 from flask_wtf import FlaskForm
 from wtforms import SelectField
 import subwayTripAnalysis as trip
@@ -9,9 +17,12 @@ import subwayTripAnalysis as trip
 app = Flask(__name__)
 app.vars = {}
 
+<<<<<<< HEAD
 app.logger.addHandler(logging.StreamHandler(sys.stdout))
 app.logger.setLevel(logging.ERROR)
 
+=======
+>>>>>>> 17f3bf3a90e32a832172b9258956487d095db41f
 @app.route('/')
 def main():
     return redirect('/home')
@@ -34,13 +45,21 @@ def vis():
 
 @app.route('/get_data_map')
 def get_data_map():
+<<<<<<< HEAD
     with open('static/data/crowdedness_new.json') as f:
+=======
+    with open('static/data/crowdedness.json') as f:
+>>>>>>> 17f3bf3a90e32a832172b9258956487d095db41f
         crowdedness_json = f.read()
     return crowdedness_json
 
 @app.route('/get_data_sample')
 def get_data_sample():
+<<<<<<< HEAD
     with open('static/data/sample_crowdedness_new.json') as f:
+=======
+    with open('static/data/sample_crowdedness.json') as f:
+>>>>>>> 17f3bf3a90e32a832172b9258956487d095db41f
         crowdedness_json = f.read()
     return crowdedness_json
 
@@ -67,8 +86,13 @@ class SelectForm(FlaskForm):
     days = SelectField('days', choices=[('sunday','Sunday'),('monday','Monday'),('tuesday','Tuesday'),('wednesday','Wednesday'),
                                         ('thursday','Thursday'),('friday','Friday'),('Saturday','Saturday')])
 
+<<<<<<< HEAD
 app.stops = pd.read_csv('static/data/stops_updated.txt',usecols=['stop_id','stop_name','stop_lat','stop_lon','location_type','parent_station','lines'])
 app.stops = app.stops[app.stops['location_type']==1]
+=======
+stops = pd.read_csv('static/data/stops_updated.txt',usecols=['stop_id','stop_name','stop_lat','stop_lon','location_type','parent_station','lines'])
+stops = stops[stops['location_type']==1]
+>>>>>>> 17f3bf3a90e32a832172b9258956487d095db41f
 days = ['sunday','monday','tuesday','wednesday','thursday','friday','saturday']
 hours = map('{:02d}'.format,range(1,13))
 minutes = map('{:02d}'.format,range(0,60))
@@ -80,12 +104,17 @@ def input():
     if request.method=='GET':
         return render_template('input.html',form=form)
     else:
+<<<<<<< HEAD
         #print request.form
+=======
+        print request.form
+>>>>>>> 17f3bf3a90e32a832172b9258956487d095db41f
         if 'lines1' in request.form:
             app.vars['line1'] = request.form['lines1']
             return render_template('input2.html',form=form,line1=app.vars['line1'])
         elif 'lines2' in request.form:
             app.vars['line2'] = request.form['lines2']
+<<<<<<< HEAD
             app.stops1 = pd.DataFrame(app.stops[app.stops.lines.map(lambda x: app.vars['line1'] in x)])
             app.stops2 = pd.DataFrame(app.stops[app.stops.lines.map(lambda x: app.vars['line2'] in x)])
             print 'app.stops1'
@@ -95,6 +124,13 @@ def input():
         elif 'start_station' in request.form:
             print 'app.stops1'
             print app.stops1
+=======
+            app.stops1 = pd.DataFrame(stops[stops.lines.map(lambda x: app.vars['line1'] in x)])
+            app.stops2 = pd.DataFrame(stops[stops.lines.map(lambda x: app.vars['line2'] in x)])
+            return render_template('input3.html',line1=app.vars['line1'],line2=app.vars['line2'],data1=app.stops1['stop_name'],
+                                   data2=app.stops2['stop_name'],form=form,hours=hours,minutes=minutes,am_pm=am_pm)
+        elif 'start_station' in request.form:
+>>>>>>> 17f3bf3a90e32a832172b9258956487d095db41f
             app.vars['date'] = request.form['days']
             app.vars['hour'] = request.form['hour']
             app.vars['minute'] = request.form['minute']
@@ -106,6 +142,10 @@ def input():
             app.vars['start_name'] = request.form['start_station']
             app.vars['end_name'] = request.form['end_station']
             app.vars['start_id'] = app.stops1[app.stops1['stop_name'] == request.form['start_station']]['stop_id'].values[0]
+<<<<<<< HEAD
+=======
+            print app.vars['start_id']
+>>>>>>> 17f3bf3a90e32a832172b9258956487d095db41f
             app.vars['end_id'] = app.stops2[app.stops2['stop_name'] == request.form['end_station']]['stop_id'].values[0]
             app.vars['titles'] = ['Depart from %s'%app.vars['start_name'],'Arrive at Transfer','Transfer From','Transfer Wait Time (mintues)',
                                   'Transfer Crowdedness','Transfer To', 'Depart from Transfer', 'Arrive at %s'%app.vars['end_name'], 'Total Time (minutes)']
@@ -114,7 +154,10 @@ def input():
 @app.route('/direct', methods=['GET','POST'])
 def direct():
     if request.method=='GET':
+<<<<<<< HEAD
         print app.vars
+=======
+>>>>>>> 17f3bf3a90e32a832172b9258956487d095db41f
         app.routes, app.page = trip.calculate_routes(app.vars['start_id'],app.vars['end_id'],app.vars['date'],app.vars['time_wanted'])
         if app.page=='multiple':
             return render_template('multiple_transfers.html',start_name=app.vars['start_name'],end_name=app.vars['end_name'])
