@@ -34,13 +34,13 @@ def vis():
 
 @app.route('/get_data_map')
 def get_data_map():
-    with open('static/data/crowdedness.json') as f:
+    with open('static/data/crowdedness_new.json') as f:
         crowdedness_json = f.read()
     return crowdedness_json
 
 @app.route('/get_data_sample')
 def get_data_sample():
-    with open('static/data/sample_crowdedness.json') as f:
+    with open('static/data/sample_crowdedness_new.json') as f:
         crowdedness_json = f.read()
     return crowdedness_json
 

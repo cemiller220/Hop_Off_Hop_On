@@ -8,7 +8,7 @@
         <thead>
             <tr>
                 {% for title in titles%}
-                <th style="width: 150px">{{title}}</th>
+                <th style="width: 150px; text-align: center">{{title}}</th>
                 {% endfor %}
             </tr>
         </thead>
@@ -16,7 +16,7 @@
             {% for trip in results %}
             <tr>
                 {% for item in trip %}
-                <td style="width: 150px">{{item}}</td>
+                <td style="width: 150px; text-align: center">{{item}}</td>
                 {% endfor %}
             </tr>
             {% endfor %}

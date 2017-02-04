@@ -4,6 +4,7 @@ import pickle
 from bisect import bisect
 from ast import literal_eval
 import math
+import time
 
 stop_times = pd.read_csv('static/data/stop_times_updated2.txt',usecols=['trip_id','stop_id','stop_sequence','arrival_seconds','departure_seconds'])
 calendar = pd.read_csv('static/data/calendar.txt', usecols=['service_id','monday','saturday','sunday']).rename(columns={'monday': 'weekday'})
@@ -11,6 +12,9 @@ trips = pd.read_csv('static/data/trips.txt',usecols=['route_id','service_id','tr
 stops = pd.read_csv('static/data/stops_updated.txt',usecols=['stop_id','stop_name','stop_lat','stop_lon','location_type','parent_station','lines'])
 stops['lines'] = stops['lines'].apply(literal_eval)
 transfers = pd.read_csv('static/data/transfers_updated2.txt', usecols=['from_stop_id','to_stop_id','start_line','end_line'])
+with open('static/models/fit_dict_all.pkl','r') as f:
+    fit = pickle.load(f)
+
 trips_merged = pd.merge(trips,calendar, on='service_id')
 
 def time_to_seconds(time):
@@ -100,11 +104,12 @@ def get_line(trip_id):
 
 def predict_crowdedness(stop_id,day,time):
     ''' predict crowdedness value between 1-10 from model '''
-    ranges = np.logspace(0,3.3,10)
-    X_predict = {'stop_id': stop_id, 'day': day, 'seconds': time}
-    with open('static/models/fit%s.pkl'%stop_id[0],'r') as f:
-        fit = pickle.load(f)
-    return bisect(ranges,fit.predict(X_predict)[0])
+    if day == 'Saturday' or day == 'Sunday':
+        day = 'Weekend'
+    ranges = np.logspace(0,2.65,9)
+
+    return bisect(ranges,fit[(stop_id,day)].predict(time)[0])+1
+    
 
 ################################################################################################
 
@@ -181,5 +186,5 @@ start = '121'
 end = '217'
 day='sunday'
 time_wanted = '8:00 am'
-calculate_routes(start,end,day,time_wanted)
+print calculate_routes(start,end,day,time_wanted)
 '''
