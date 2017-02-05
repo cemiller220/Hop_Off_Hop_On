@@ -1,5 +1,8 @@
 {% extends 'base.html' %}
 {% block content %}
+<div class="page-header text-primary" style="padding-left: 10px">
+    <h1>NYC Taxi Data 2013</h1>
+</div>
 <div class="row">
     <div class="col-md-2"></div>
     <div class="col-md-8">
@@ -48,15 +51,12 @@
     <div class="col-md-3"></div>
 </div>
 
-<div class="row">
-    <div class="col-md-12">
-        <div class="panel panel-primary" style="margin: 20px 20px;">
-        <p style="margin: 10px 5px"> This data was obtained by analyzing the 2013 NYC taxi ride data. The data set contains information for over >12 million taxi rides throughout the year. For my analysis, I chose a random sample of 350,000 taxi rides from each month of the year totaling 4.2 million taxi rides analyzed.</p>
-        <p style="margin: 10px 5px"> For each trip, the closest subway station to the pickup and dropoff locations were determined and were defined as "close" to a subway station if it was within 0.25 miles (~5 minute walk). </p>
-        <p style="margin: 10px 5px"> Looking at which subway lines generally come to those stations, the trip was identified as either direct or requiring a transfer. Using data on all the transfer stations, it was determined if a single transfer or multiple transfers were required. </p>
-        <p style="margin: 10px 5px"> My subsequent analysis depends only on the trips that start and end close to a subway station and require a single transfer </p>
-        </div>
-    </div>
+<div class="row featurette" style="padding: 10px 50px">
+    <h1 class="featurette-heading text-primary">Analysis</h1>
+    <p class="lead" style="margin: 10px 5px"> This data was obtained by analyzing the 2013 NYC taxi ride data. The data set contains information for over >12 million taxi rides throughout the year. For my analysis, I chose a random sample of 350,000 taxi rides from each month of the year totaling 4.2 million taxi rides analyzed.</p>
+    <p class="lead" style="margin: 10px 5px"> For each trip, the closest subway station to the pickup and dropoff locations were determined and were defined as "close" to a subway station if it was within 0.25 miles (~5 minute walk). </p>
+    <p class="lead" style="margin: 10px 5px"> Looking at which subway lines generally come to those stations, the trip was identified as either direct or requiring a transfer. Using data on all the transfer stations, it was determined if a single transfer or multiple transfers were required. </p>
+    <p class="lead" style="margin: 10px 5px"> My subsequent analysis depends only on the trips that start and end close to a subway station and require a single transfer </p>
 </div>
 
 <script>

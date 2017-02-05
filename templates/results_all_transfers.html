@@ -23,6 +23,9 @@
         </tbody>
     </table>
 </div>
+<div class="panel panel-primary" style="width: 450px; margin: 20px auto">
+    <p style='text-align: center; margin: 0; font-size: 16px'>Transfer crowdedness is reported on a scale from 1 - 10 </p>
+</div>
 <div style="width: 1200px; margin: 20px auto">
     {{ button1 }}
     {{ button2 }}
@@ -30,18 +33,6 @@
     <form id='restart' method='get' action='input' style="display: inline-block; padding-left: {{padding}}%" >
         <p><input type='submit' value='New Trip' class="btn btn-lg btn-primary" /></p>
     </form></div>
-
-<!--<script>
-    var results = {{results}}
-    $(function(){
-      $("#shortest").click(function(){
-                           for(var i=0; i<results.length; i++){
-                           for(var j=0; j<i.length; j++)
-                           }
-                           $('td').css('background-color','blue');
-                           })
-      });
-</script>-->
 
 {% endblock %}
 
