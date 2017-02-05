@@ -48,7 +48,6 @@ function makeGraphs(error, recordsJson) {
                     d["time"].setMinutes(0);
                     d["time"].setSeconds(0);
                     d["adjusted_value"] = +d["adjusted_value"];
-                    d["seconds"] = +d["seconds"];
                     d["stop_lat"] = +d["stop_lat"];
                     d["stop_lon"] = +d["stop_lon"];
                     lines = [];
@@ -83,11 +82,17 @@ function makeGraphs(error, recordsJson) {
     
     //Define dimensions
     var stop_name_dim = ndx.dimension(function(d) { return d.stop_name; });
+    console.log(stop_name_dim);
     var day_dim = ndx.dimension(function(d) { return d.day; });
+    console.log(day_dim);
     var lines_dim = ndx.dimension(function(d) { return d.lines; });
+    console.log(lines_dim);
     var time_dim = ndx.dimension(function(d) { return timeFormat(d.time); });
+    console.log(time_dim);
     var stop_day_hour_dim = ndx.dimension(function(d) {return d.stop_id + " " + d.day + " " + d.time; } );
+    console.log(stop_day_hour_dim);
     var allDim = ndx.dimension(function(d) {return d;});
+    console.log(allDim);
 
     
     //Group data

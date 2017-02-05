@@ -44,9 +44,9 @@ function makePlot(error, recordsJson) {
     
     records.forEach(function(d) {
                     d["time"] = dateFormat.parse(d["time"]);
+                    d["time"].setMinutes(0);
                     d["time"].setSeconds(0);
                     d["adjusted_value"] = +d["adjusted_value"];
-                    d["seconds"] = +d["seconds"];
                     d["stop_lat"] = +d["stop_lat"];
                     d["stop_lon"] = +d["stop_lon"];
                     lines = [];
@@ -76,9 +76,8 @@ function makePlot(error, recordsJson) {
     var stop_name_dim = ndx.dimension(function(d) { return d.stop_name; });
     var day_dim = ndx.dimension(function(d) { return d.day; });
     var lines_dim = ndx.dimension(function(d) { return d.lines; });
-    var crowd_dim = ndx.dimension(function(d) {return [d.stop_name, d3.time.hour(d.time)]; })
+    var crowd_dim = ndx.dimension(function(d) {return [d.stop_name, d.time]; })
     var allDim = ndx.dimension(function(d) {return d;});
-    
     
     //Group data
     var stop_name_group = stop_name_dim.group();
@@ -140,7 +139,8 @@ function makePlot(error, recordsJson) {
         .group(day_group)
         .controlsUseVisibility(true);
     
-    crowdChart
+    var drawPlot = function() {
+        crowdChart
         .width(590)
         .height(400)
         .chart(function(c) {return dc.lineChart(c).interpolate('basis'); })
@@ -158,10 +158,15 @@ function makePlot(error, recordsJson) {
         .keyAccessor(function(d) {return d.key[1];})
         .valueAccessor(function(d) {return d.value;})
         .legend(dc.legend().x(60).y(0).itemHeight(13).gap(5).horizontal(0));
+        
+    dc.renderAll("plot");
+    }
+    dc.renderAll("group1");
     
+    //drawPlot();
     crowdChart.margins().left += 10;
     
-    dc.renderAll("group1");
+    
     
     function remove_empty_bins(source_group) {
         return {
@@ -175,12 +180,13 @@ function makePlot(error, recordsJson) {
     
     
     var submitButton = document.getElementById("make_plot");
-    submitButton.addEventListener("click", function(){ drawPlot(); });
+    submitButton.addEventListener("click", function(){
+                                  crowd_group = crowd_dim.group().reduceSum(function(d) { return d.adjusted_value; });
+                                  filtered_crowd = remove_empty_bins(crowd_group);
+                                  drawPlot();
+                                  });
     
-    function drawPlot() {
-        crowd_dim.filter(null);
-        filtered_crowd = remove_empty_bins(crowd_group);
-        dc.renderAll("plot");
-    }
-
+    
+    
+    
 }
