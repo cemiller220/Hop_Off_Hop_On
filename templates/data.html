@@ -114,6 +114,8 @@ function update(dist) {
                 .reduceXTicks(true)
                 .rotateLabels(0)
                 .groupSpacing(0.1)
+                .stacked(true)
+                .showControls(true)
                 .color(d3.scale.myColors().range());
                 
                 var dist_titles = ['<' + dist.toFixed(2) + ' Miles','>' + dist.toFixed(2) + ' Miles']
